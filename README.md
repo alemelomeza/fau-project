@@ -19,4 +19,4 @@ Tras definir el objetivo y con las herramientas y técnicas enseñadas durante e
 
 ## Uso
 
-El mapa puede ser visualizado en el siguiente enlace [https://github.com/alemelomeza/fau-project](https://github.com/alemelomeza/fau-project)
+El mapa puede ser visualizado en el siguiente enlace [https://alemelomeza.github.io/fau-project/](https://alemelomeza.github.io/fau-project/)
