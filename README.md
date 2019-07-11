@@ -15,3 +15,8 @@ Tras definir el objetivo y con las herramientas y técnicas enseñadas durante e
 * Mediante el uso de `NodeJS` y la libreria `request` se procedio recolectar la información
 * La información recibió un procesamiento el cual la estructuró para un mejor manejo de ésta
 * Utilizando la libreria `Leafleft` y su plugin `Leaflet.heat` se preparo un mapa de calor
+* Disponer en `GitHub` para el acceso público
+
+## Uso
+
+El mapa puede ser visualizado en el siguiente enlace [https://github.com/alemelomeza/fau-project](https://github.com/alemelomeza/fau-project)
