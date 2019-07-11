@@ -1,4 +1,4 @@
-# Starbucks Heatmap :coffe:
+# Starbucks Heatmap :coffee:
 
 Mapa de calor de las cafeterias :copyright: Starbucks en el gran Santiago, para el Curso de **"Desarrollo y Programción de Visualización de Datos Geográficos en Internet"** versión 2019 de la Facultad de Arquitectura y Ubanismo (FAU) de la Universidad de Chile.
 
