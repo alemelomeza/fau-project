@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Starbucks Heatmap</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+    <style>
+        #mapid {
+            height: 600px;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-4">Starbucks Heatmap ☕️</h1>
+        <p class="lead">Mapa de calor de las cafeterias &copy; Starbucks en el gran Santiago, para el Curso de <strong>"Desarrollo y Programción de Visualización de Datos Geográficos en Internet"</strong> versión 2019 de la Facultad de Arquitectura y Ubanismo (FAU) de la Universidad de Chile.</p>
+    </div>
+
+    <div class="container">
+        <h2>Objetivo</h2>
+        <p>El objetivo es presentar la concentración/distribución de las cafeterias de la cadena &copy; Starbucks en el gran Santiago.</p>
+
+        <h2>Proceso</h2>
+        <p>Tras definir el objetivo y con las herramientas y técnicas enseñadas durante el curso se procedió a realizar el siguiente proceso:</p>
+        <ul>
+            <li>Identifacar las fuentes donde encontrar la información, en este caso el sitio web chileno de la cadena <a href="http://www.starbucks.cl/store-locator/search">http://www.starbucks.cl/store-locator/search</a></li>
+            <li>Inspeccionar el código del sitio para entender su estructura</li>
+            <li>Mediante el uso de NodeJS y la libreria request se procedio recolectar la información</li>
+            <li>La información recibió un procesamiento el cual la estructuró para un mejor manejo de ésta</li>
+            <li>Utilizando la libreria Leafleft y su plugin Leaflet.heat se preparo un mapa de calor</li>
+        </ul>
+    </div>
+
+    <div id="mapid" class="mt-3"></div>
+
+    <footer class="container mt-3">
+        <p class="text-center text-muted">&copy; 2019. Desarrollado con &hearts; por <a href="" >@alemelomeza</a></p>
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+    <script src="leaflet-heat.js"></script>
+    <script src="stores.js"></script>
+    <script>
+        var map = L.map('mapid', {
+            minZoom: 11,
+            maxZoom: 13,
+            zoomControl: true,
+            attributionControl: false
+        }).setView([-33.468484, -70.61865799999998], 12);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        var points = stores.features.map(store => {
+            return [store.geometry.coordinates[0], store.geometry.coordinates[1]];
+        });
+
+        var heat = L.heatLayer(points, {
+            minOpacity: 0.5,
+            radius: 25
+        }).addTo(map);
+    </script>
+</body>
+</html>
